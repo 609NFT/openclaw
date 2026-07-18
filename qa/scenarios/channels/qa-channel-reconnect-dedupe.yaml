@@ -5,10 +5,10 @@ scenario:
   surface: channel
   coverage:
     primary:
-      - channels.reconnect
+      - channel-framework.automatic-final-reply-delivery-reconnect
     secondary:
-      - channels.dedup
-      - runtime.delivery
+      - channel-framework.automatic-final-reply-delivery-dedup
+      - channel-framework.automatic-final-reply-delivery
   objective: Verify qa-channel resumes after a Gateway restart without replaying consumed inbound events or completed delivery.
   successCriteria:
     - Agent replies once before a reconnect-style readiness cycle.
