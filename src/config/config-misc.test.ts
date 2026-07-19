@@ -1166,7 +1166,7 @@ describe("config strict validation", () => {
         fallback: "none",
         query: { maxResults: 7 },
       });
-      expect(snap.sourceConfig.agents?.defaults?.memorySearch).toBeUndefined();
+      expect(snap.sourceConfig.memory?.search).toBeUndefined();
     });
   });
 
