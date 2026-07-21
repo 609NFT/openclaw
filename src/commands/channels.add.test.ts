@@ -374,12 +374,6 @@ type SignalAfterAccountConfigWritten = NonNullable<
 type ApplyAccountConfigParams = Parameters<
   NonNullable<NonNullable<ChannelPlugin["setup"]>["applyAccountConfig"]>
 >[0];
-type ResolveAccountIdParams = Parameters<
-  NonNullable<NonNullable<ChannelPlugin["setup"]>["resolveAccountId"]>
->[0];
-type PrepareAccountConfigInputParams = Parameters<
-  NonNullable<NonNullable<ChannelPlugin["setup"]>["prepareAccountConfigInput"]>
->[0];
 
 function createSignalPlugin(
   afterAccountConfigWritten: SignalAfterAccountConfigWritten,
