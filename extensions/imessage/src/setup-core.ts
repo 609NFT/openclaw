@@ -1,3 +1,4 @@
+import { defineChannelSetupContract } from "openclaw/plugin-sdk/channel-setup";
 // Imessage plugin module implements setup core behavior.
 import type {
   ChannelSetupAdapter,
@@ -231,6 +232,29 @@ export const imessageSetupAdapter: ChannelSetupAdapter = {
   }),
   singleAccountKeysToMove: ["cliPath", "dbPath", "service", "region"],
 };
+
+export const imessageSetupContract = defineChannelSetupContract({
+  fields: {
+    cliPath: {
+      kind: "string",
+      cli: { flags: "--cli-path <path>", description: "iMessage CLI path" },
+    },
+    dbPath: {
+      kind: "string",
+      cli: { flags: "--db-path <path>", description: "iMessage database path" },
+    },
+    service: {
+      kind: "choice",
+      choices: ["imessage", "sms", "auto"],
+      cli: { flags: "--service <service>", description: "iMessage service" },
+    },
+    region: {
+      kind: "string",
+      cli: { flags: "--region <region>", description: "SMS region" },
+    },
+  },
+  legacyAdapter: imessageSetupAdapter,
+});
 
 export const imessageSetupStatusBase = {
   configuredLabel: t("wizard.channels.statusConfigured"),
