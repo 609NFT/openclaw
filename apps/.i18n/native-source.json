@@ -28723,7 +28723,7 @@
     },
     {
       "kind": "conditional-branch",
-      "line": 789,
+      "line": 792,
       "path": "apps/macos/Sources/OpenClaw/AppState.swift",
       "source": "\\(user)@\\(host)",
       "surface": "apple",
@@ -28731,7 +28731,7 @@
     },
     {
       "kind": "conditional-branch",
-      "line": 789,
+      "line": 792,
       "path": "apps/macos/Sources/OpenClaw/AppState.swift",
       "source": "\\(user)@\\(host):\\(port)",
       "surface": "apple",
