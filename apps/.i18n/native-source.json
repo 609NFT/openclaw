@@ -35018,7 +35018,15 @@
       "id": "native.apple.cc8c64fe846d3cca"
     },
     {
-      "kind": "ui-call",
+      "kind": "conditional-branch",
+      "line": 296,
+      "path": "apps/macos/Sources/OpenClaw/PermissionsSettings.swift",
+      "source": "Check",
+      "surface": "apple",
+      "id": "native.apple.326e187a6656d8d9"
+    },
+    {
+      "kind": "conditional-branch",
       "line": 296,
       "path": "apps/macos/Sources/OpenClaw/PermissionsSettings.swift",
       "source": "Grant",
@@ -35042,7 +35050,7 @@
       "id": "native.apple.27ff5be3db0efbd0"
     },
     {
-      "kind": "ui-call",
+      "kind": "conditional-branch",
       "line": 314,
       "path": "apps/macos/Sources/OpenClaw/PermissionsSettings.swift",
       "source": "Request access",
@@ -35051,11 +35059,19 @@
     },
     {
       "kind": "conditional-branch",
+      "line": 314,
+      "path": "apps/macos/Sources/OpenClaw/PermissionsSettings.swift",
+      "source": "Status unavailable",
+      "surface": "apple",
+      "id": "native.apple.5a5689d96828c424"
+    },
+    {
+      "kind": "conditional-branch",
       "line": 342,
       "path": "apps/macos/Sources/OpenClaw/PermissionsSettings.swift",
-      "source": "Control other apps (e.g. Terminal) for automation actions",
+      "source": "Control Terminal for automation actions; other apps request access separately",
       "surface": "apple",
-      "id": "native.apple.4a4c10ca63e99590"
+      "id": "native.apple.2d263648f3916394"
     },
     {
       "kind": "conditional-branch",
@@ -35085,17 +35101,17 @@
       "kind": "conditional-branch",
       "line": 346,
       "path": "apps/macos/Sources/OpenClaw/PermissionsSettings.swift",
-      "source": "Allow Voice Wake and audio capture",
+      "source": "Allow Voice Wake, push-to-talk, Talk Mode, and Quick Chat dictation",
       "surface": "apple",
-      "id": "native.apple.b004145c37a470f8"
+      "id": "native.apple.45119f87d3069501"
     },
     {
       "kind": "conditional-branch",
       "line": 347,
       "path": "apps/macos/Sources/OpenClaw/PermissionsSettings.swift",
-      "source": "Transcribe Voice Wake trigger phrases on-device",
+      "source": "Use Apple Speech; passive Voice Wake stays on-device",
       "surface": "apple",
-      "id": "native.apple.7c8b825829b3924d"
+      "id": "native.apple.33f1e220cc7d69e1"
     },
     {
       "kind": "conditional-branch",
@@ -36109,17 +36125,17 @@
       "kind": "plist-string",
       "line": 61,
       "path": "apps/macos/Sources/OpenClaw/Resources/Info.plist",
-      "source": "OpenClaw needs the mic for Voice Wake tests and agent audio capture.",
+      "source": "OpenClaw uses the microphone for Voice Wake, push-to-talk, Talk Mode, Quick Chat dictation, and agent audio capture.",
       "surface": "apple",
-      "id": "native.apple.5db9a976fd1c7fcb"
+      "id": "native.apple.0fdd4a93f90c6f95"
     },
     {
       "kind": "plist-string",
       "line": 63,
       "path": "apps/macos/Sources/OpenClaw/Resources/Info.plist",
-      "source": "OpenClaw uses speech recognition to detect your Voice Wake trigger phrase.",
+      "source": "OpenClaw uses Apple Speech for Voice Wake, push-to-talk, Talk Mode, and Quick Chat dictation. Voice Wake stays on-device.",
       "surface": "apple",
-      "id": "native.apple.b7aba524ef867e7f"
+      "id": "native.apple.44701896858c9029"
     },
     {
       "kind": "plist-string",
@@ -37451,7 +37467,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 129,
+      "line": 133,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Voice Wake requires macOS 26 or newer",
       "surface": "apple",
@@ -37459,7 +37475,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 131,
+      "line": 135,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "The Voice Wake and push-to-talk controls are hidden on older macOS versions.",
       "surface": "apple",
@@ -37467,7 +37483,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 152,
+      "line": 156,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Voice & Talk",
       "surface": "apple",
@@ -37475,7 +37491,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 153,
+      "line": 157,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Wake phrases, push-to-talk, microphone input, and Talk Mode feedback.",
       "surface": "apple",
@@ -37483,7 +37499,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 158,
+      "line": 162,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Activation",
       "surface": "apple",
@@ -37491,23 +37507,31 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 160,
+      "line": 164,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Enable Voice Wake",
       "surface": "apple",
       "id": "native.apple.ef337702bfdcde32"
     },
     {
-      "kind": "ui-named-argument-multiline",
-      "line": 161,
+      "kind": "conditional-branch",
+      "line": 166,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
-      "source": "Listen for a wake phrase before running voice commands. Recognition runs fully on-device.",
+      "source": "Listen for a wake phrase before running voice commands. Wake-phrase recognition stays on this Mac.",
       "surface": "apple",
-      "id": "native.apple.e992b45cdbccdd10"
+      "id": "native.apple.e2811fb1981c52f9"
+    },
+    {
+      "kind": "conditional-branch",
+      "line": 167,
+      "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
+      "source": "On-device recognition is unavailable for the selected language on this Mac.",
+      "surface": "apple",
+      "id": "native.apple.8e55ed92eb632efa"
     },
     {
       "kind": "ui-named-argument",
-      "line": 167,
+      "line": 172,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Trigger Talk Mode",
       "surface": "apple",
@@ -37515,7 +37539,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 168,
+      "line": 173,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Start a full voice conversation when a wake phrase is detected.",
       "surface": "apple",
@@ -37523,7 +37547,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 173,
+      "line": 178,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Hold Right Option to talk",
       "surface": "apple",
@@ -37531,7 +37555,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 174,
+      "line": 179,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Start listening while you hold the key and show the preview overlay.",
       "surface": "apple",
@@ -37539,7 +37563,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 179,
+      "line": 184,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Push-to-talk paused",
       "surface": "apple",
@@ -37547,7 +37571,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 180,
+      "line": 185,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Push-to-Talk resumes when Talk Mode is turned off.",
       "surface": "apple",
@@ -37555,7 +37579,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 188,
+      "line": 193,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Play phase-transition sounds",
       "surface": "apple",
@@ -37563,7 +37587,7 @@
     },
     {
       "kind": "ui-named-argument-multiline",
-      "line": 189,
+      "line": 194,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Play short sounds when Talk Mode switches between listening, thinking, and speaking.",
       "surface": "apple",
@@ -37571,7 +37595,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 195,
+      "line": 200,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Right Option stops speech",
       "surface": "apple",
@@ -37579,7 +37603,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 196,
+      "line": 201,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Tap Right Option to interrupt speech and return to listening.",
       "surface": "apple",
@@ -37587,7 +37611,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 201,
+      "line": 206,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Recognition",
       "surface": "apple",
@@ -37595,7 +37619,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 207,
+      "line": 212,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Test",
       "surface": "apple",
@@ -37603,7 +37627,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 307,
+      "line": 312,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Trigger Words",
       "surface": "apple",
@@ -37611,7 +37635,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 309,
+      "line": 314,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Wake phrases",
       "surface": "apple",
@@ -37619,7 +37643,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 310,
+      "line": 315,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Short phrases that start voice wake detection.",
       "surface": "apple",
@@ -37627,7 +37651,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 316,
+      "line": 321,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Add word",
       "surface": "apple",
@@ -37635,7 +37659,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 321,
+      "line": 326,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Reset",
       "surface": "apple",
@@ -37643,7 +37667,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 343,
+      "line": 348,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "No wake phrases configured",
       "surface": "apple",
@@ -37651,7 +37675,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 373,
+      "line": 378,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Sounds",
       "surface": "apple",
@@ -37659,7 +37683,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 375,
+      "line": 380,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Trigger sound",
       "surface": "apple",
@@ -37667,7 +37691,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 379,
+      "line": 384,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Send sound",
       "surface": "apple",
@@ -37675,7 +37699,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 466,
+      "line": 471,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "No Sound",
       "surface": "apple",
@@ -37683,7 +37707,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 474,
+      "line": 479,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Choose file…",
       "surface": "apple",
@@ -37691,7 +37715,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 494,
+      "line": 499,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Play",
       "surface": "apple",
@@ -37699,7 +37723,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 542,
+      "line": 547,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Microphone",
       "surface": "apple",
@@ -37707,7 +37731,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 544,
+      "line": 549,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "System default",
       "surface": "apple",
@@ -37715,7 +37739,7 @@
     },
     {
       "kind": "conditional-branch",
-      "line": 546,
+      "line": 551,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Unavailable",
       "surface": "apple",
@@ -37723,7 +37747,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 557,
+      "line": 562,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Disconnected (using System default)",
       "surface": "apple",
@@ -37731,7 +37755,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 576,
+      "line": 581,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Recognition language",
       "surface": "apple",
@@ -37739,7 +37763,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 577,
+      "line": 582,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Languages are tried in order. Models may need a first-use download on macOS 26.",
       "surface": "apple",
@@ -37747,7 +37771,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 579,
+      "line": 584,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Language",
       "surface": "apple",
@@ -37755,15 +37779,23 @@
     },
     {
       "kind": "ui-call",
-      "line": 581,
+      "line": 586,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "\\(self.friendlyName(for: current)) (System)",
       "surface": "apple",
       "id": "native.apple.d57fd5213daf2a6e"
     },
     {
+      "kind": "ui-call",
+      "line": 598,
+      "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
+      "source": "Voice Wake needs on-device recognition for its selected language. Push-to-talk and Talk Mode remain available.",
+      "surface": "apple",
+      "id": "native.apple.2565d77dbe6ce76b"
+    },
+    {
       "kind": "ui-named-argument",
-      "line": 593,
+      "line": 608,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Additional languages",
       "surface": "apple",
@@ -37771,7 +37803,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 636,
+      "line": 651,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Add another language",
       "surface": "apple",
@@ -37779,7 +37811,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 640,
+      "line": 655,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Add",
       "surface": "apple",
@@ -37787,7 +37819,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 746,
+      "line": 761,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Live level",
       "surface": "apple",
@@ -37795,7 +37827,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 820,
+      "line": 835,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Wake phrase",
       "surface": "apple",
@@ -37803,7 +37835,7 @@
     },
     {
       "kind": "ui-modifier",
-      "line": 837,
+      "line": 852,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Remove trigger word",
       "surface": "apple",
@@ -37811,7 +37843,7 @@
     },
     {
       "kind": "ui-localized-call",
-      "line": 861,
+      "line": 876,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Language %lld",
       "surface": "apple",
@@ -37819,7 +37851,7 @@
     },
     {
       "kind": "ui-named-argument",
-      "line": 863,
+      "line": 878,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Fallback recognition language.",
       "surface": "apple",
@@ -37827,7 +37859,7 @@
     },
     {
       "kind": "ui-call",
-      "line": 867,
+      "line": 882,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Language \\(self.index + 2)",
       "surface": "apple",
@@ -37835,7 +37867,7 @@
     },
     {
       "kind": "ui-modifier",
-      "line": 884,
+      "line": 899,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "Remove language",
       "surface": "apple",
@@ -37843,7 +37875,7 @@
     },
     {
       "kind": "ui-call-concatenated",
-      "line": 899,
+      "line": 914,
       "path": "apps/macos/Sources/OpenClaw/VoiceWakeSettings.swift",
       "source": "OpenClaw reacts when any trigger appears in a transcription. Keep phrases short to avoid false positives.",
       "surface": "apple",
