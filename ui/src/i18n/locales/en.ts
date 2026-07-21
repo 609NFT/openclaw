@@ -1588,6 +1588,7 @@ export const en: TranslationMap = {
     pages: "Pages",
     customize: "Edit pinned items",
     customizeReset: "Reset pinned items",
+    workboardGroup: "WorkBoard",
   },
   terminal: {
     title: "Terminal",
