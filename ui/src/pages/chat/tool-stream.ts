@@ -55,6 +55,7 @@ type ToolStreamHost = {
   agentsList?: { defaultId?: string | null } | null;
   hello?: { snapshot?: unknown } | null;
   chatRunId: string | null;
+  chatRunUsageById?: Map<string, number>;
   chatStream: string | null;
   chatStreamStartedAt: number | null;
   chatStreamSegments: ChatStreamSegment[];
@@ -616,6 +617,29 @@ function resolveAcceptedSession(
   return { accepted: true, sessionKey };
 }
 
+function handleUsageEvent(host: ToolStreamHost, payload: AgentEventPayload): boolean {
+  if (payload.stream !== "usage") {
+    return false;
+  }
+  if (!resolveAcceptedSession(host, payload, { allowSessionScopedWhenIdle: true }).accepted) {
+    return true;
+  }
+  const rawOutputTokens = payload.data?.outputTokens;
+  if (typeof rawOutputTokens !== "number" || !Number.isFinite(rawOutputTokens)) {
+    return true;
+  }
+  const outputTokens = Math.floor(rawOutputTokens);
+  if (outputTokens < 0) {
+    return true;
+  }
+  const current = host.chatRunUsageById?.get(payload.runId);
+  if (current !== undefined && outputTokens <= current) {
+    return true;
+  }
+  host.chatRunUsageById = new Map(host.chatRunUsageById).set(payload.runId, outputTokens);
+  return true;
+}
+
 function handleLifecycleFallbackEvent(host: CompactionHost, payload: AgentEventPayload) {
   const data = payload.data ?? {};
   const phase = payload.stream === "fallback" ? "fallback" : toTrimmedString(data.phase);
@@ -858,6 +882,10 @@ export function handleAgentEvent(host: ToolStreamHost, payload?: AgentEventPaylo
     }
   }
 
+  if (handleUsageEvent(host, payload)) {
+    return;
+  }
+
   // Handle compaction events
   if (payload.stream === "compaction") {
     handleCompactionEvent(host as CompactionHost, payload);
@@ -865,6 +893,15 @@ export function handleAgentEvent(host: ToolStreamHost, payload?: AgentEventPaylo
   }
 
   if (payload.stream === "lifecycle") {
+    const phase = payload.data?.phase;
+    if (
+      (phase === "start" || phase === "end" || phase === "error") &&
+      host.chatRunUsageById?.has(payload.runId)
+    ) {
+      const usageByRun = new Map(host.chatRunUsageById);
+      usageByRun.delete(payload.runId);
+      host.chatRunUsageById = usageByRun;
+    }
     if (handleLifecycleApprovalEvent(host, payload)) {
       return;
     }

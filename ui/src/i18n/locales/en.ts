@@ -3642,6 +3642,7 @@ export const en: TranslationMap = {
   chat: {
     disconnected: "Disconnected from gateway.",
     waitingForApproval: "Waiting for approval…",
+    outputTokens: "{count} output tokens",
     archivedSessionDisabled: "Restore this thread to send messages.",
     loadOlder: "Load older",
     sessionHeader: {

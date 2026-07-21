@@ -1553,12 +1553,29 @@ describe("grouped chat rendering", () => {
     expect(container.querySelector(".chat-group-footer")).toBeNull();
   });
 
+  it("shows live output usage beside elapsed time", () => {
+    const container = document.createElement("div");
+
+    render(
+      renderStreamGroup([{ kind: "reading-indicator", key: "reading", startedAt: 1_000 }], {
+        runOutputTokens: 5_500,
+      }),
+      container,
+    );
+
+    expect(container.querySelector(".chat-working-indicator__elapsed")).not.toBeNull();
+    expect(container.querySelector(".chat-working-indicator__tokens")?.textContent?.trim()).toBe(
+      "5.5k output tokens",
+    );
+  });
+
   it("relabels the working indicator while the run waits for approval", () => {
     const container = document.createElement("div");
 
     render(
       renderStreamGroup([{ kind: "reading-indicator", key: "reading", startedAt: 1_000 }], {
         waitingApproval: true,
+        runOutputTokens: 5_500,
       }),
       container,
     );
@@ -1567,6 +1584,7 @@ describe("grouped chat rendering", () => {
       "Waiting for approval…",
     );
     expect(container.querySelector(".chat-working-indicator__elapsed")).toBeNull();
+    expect(container.querySelector(".chat-working-indicator__tokens")).toBeNull();
   });
 
   it("renders the active plan card inside the working stream group", () => {

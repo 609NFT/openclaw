@@ -533,6 +533,7 @@ export function resetChatStateForRouteSession(
   state.chatQueueModeOverride = undefined;
   state.chatEffectiveQueueMode = undefined;
   state.chatStream = null;
+  state.chatRunUsageById = new Map();
   state.chatSending = false;
   state.chatSendingScopeKey = null;
   state.chatSideChatTurns = [];
@@ -1266,6 +1267,7 @@ export function createPageState(
     chatEffectiveQueueMode: undefined,
     chatAttachments: [] as ChatAttachment[],
     chatRunId: null,
+    chatRunUsageById: new Map<string, number>(),
     chatStream: null,
     chatStreamStartedAt: null,
     lastError: null,

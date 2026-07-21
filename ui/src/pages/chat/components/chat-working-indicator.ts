@@ -38,6 +38,7 @@ function stanceClass(key: string): string {
 export function renderChatWorkingIndicator(
   part: Extract<ChatItem, { kind: "reading-indicator" }>,
   waitingApproval = false,
+  outputTokens?: number | null,
 ) {
   // The animated claw stays decorative; the text status exposes progress without
   // announcing every elapsed-time tick to screen readers.
@@ -60,6 +61,14 @@ export function renderChatWorkingIndicator(
                 .startMs=${part.startedAt}
                 .seed=${part.key}
               ></openclaw-working-phrase>
+              ${outputTokens !== null && outputTokens !== undefined
+                ? html`
+                    <span aria-hidden="true">·</span>
+                    <span class="chat-working-indicator__tokens">
+                      ${t("chat.outputTokens", { count: formatCompactTokenCount(outputTokens) })}
+                    </span>
+                  `
+                : nothing}
             `}
       </span>
     </div>

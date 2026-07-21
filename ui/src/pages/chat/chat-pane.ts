@@ -3230,6 +3230,10 @@ class ChatPane extends OpenClawLightDomElement {
     // split; bottom strips do not.
     const sideRailCount = (railSideDocked ? 1 : 0) + (tasksSideDocked ? 1 : 0);
     const detailSplitWidth = chatLayoutWidth - sideRailCount * WORKSPACE_RAIL_MAX_WIDTH;
+    const displayRunId = state.chatRunId ?? selectedSession?.activeRunIds?.[0];
+    const runOutputTokens = displayRunId
+      ? (state.chatRunUsageById?.get(displayRunId) ?? null)
+      : null;
     const props: ChatProps = {
       transcript: this.transcript,
       paneId: this.paneId,
@@ -3273,6 +3277,7 @@ class ChatPane extends OpenClawLightDomElement {
       streamSegments: catalogKey ? [] : state.chatStreamSegments,
       stream: catalogKey ? null : state.chatStream,
       streamStartedAt: catalogKey ? null : state.chatStreamStartedAt,
+      runOutputTokens: catalogKey ? null : runOutputTokens,
       assistantAvatarUrl: resolveChatAvatarUrl(state),
       sendShortcut: state.settings.chatSendShortcut,
       followUpMode: state.chatFollowUpMode,

@@ -341,6 +341,7 @@ export type ChatState = {
   chatAttachments: ChatAttachment[];
   chatQueue: ChatQueueItem[];
   chatRunId: string | null;
+  chatRunUsageById?: Map<string, number>;
   chatStream: string | null;
   chatStreamStartedAt: number | null;
   planStatus?: PlanStatus | null;

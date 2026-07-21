@@ -109,6 +109,7 @@ type ChatThreadProps = {
   streamSegments: ChatStreamSegment[];
   stream: string | null;
   streamStartedAt: number | null;
+  runOutputTokens?: number | null;
   queue: ChatQueueItem[];
   showThinking: boolean;
   showToolCalls: boolean;
@@ -1289,6 +1290,7 @@ function renderChatThreadContents(
         planStatus: props.planStatus,
         planActive: Boolean(props.runActive),
         waitingApproval: props.waitingApproval,
+        runOutputTokens: props.runOutputTokens,
         onOpenSidebar: props.onOpenSidebar,
         assistant: assistantIdentity,
         basePath: props.basePath,
