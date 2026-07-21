@@ -1224,6 +1224,7 @@ function renderChatThreadContents(
       userId: props.userId ?? null,
       userName: props.userName ?? null,
       userAvatar: props.userAvatar ?? null,
+      showAvatarGutter: !isDirectThread,
       basePath: props.basePath,
       localMediaPreviewRoots: props.localMediaPreviewRoots ?? [],
       assistantAttachmentAuthToken: props.assistantAttachmentAuthToken ?? null,
