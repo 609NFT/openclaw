@@ -68,6 +68,7 @@ describe("agent-events sequencing", () => {
     const emitUsage = (outputTokens: number) => {
       recordAgentRunOutputTokens({
         runId: "usage-run",
+        lifecycleGeneration,
         outputTokens,
         emit: (data) => emitAgentEvent({ runId: "usage-run", stream: "usage", data }),
       });
