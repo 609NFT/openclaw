@@ -715,17 +715,6 @@ const TtsProviderConfigSchema = z
       z.record(z.string(), z.unknown()),
     ]),
   );
-const TtsPersonaPromptSchema = z
-  .object({
-    profile: z.string().optional(),
-    scene: z.string().optional(),
-    sampleContext: z.string().optional(),
-    style: z.string().optional(),
-    accent: z.string().optional(),
-    pacing: z.string().optional(),
-    constraints: z.array(z.string()).optional(),
-  })
-  .strict();
 const TtsPersonaSchema = z
   .object({
     label: z.string().optional(),
@@ -734,7 +723,6 @@ const TtsPersonaSchema = z
     fallbackPolicy: z
       .union([z.literal("preserve-persona"), z.literal("provider-defaults"), z.literal("fail")])
       .optional(),
-    prompt: TtsPersonaPromptSchema.optional(),
     providers: z.record(z.string(), TtsProviderConfigSchema).optional(),
   })
   .strict();
