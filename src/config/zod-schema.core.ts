@@ -107,7 +107,6 @@ const SecretsFileProviderSchema = z
       .positive()
       .max(20 * 1024 * 1024)
       .optional(),
-    allowInsecurePath: z.boolean().optional(),
   })
   .strict();
 
@@ -143,8 +142,6 @@ const SecretsManualExecProviderSchema = z
       )
       .max(64)
       .optional(),
-    allowInsecurePath: z.boolean().optional(),
-    allowSymlinkCommand: z.boolean().optional(),
   })
   .strict();
 
@@ -764,7 +761,6 @@ export const TtsConfigSchema = z
       .strict()
       .optional(),
     providers: z.record(z.string(), TtsProviderConfigSchema).optional(),
-    prefsPath: z.string().optional(),
     maxTextLength: z.number().int().min(1).optional(),
     timeoutMs: z.number().int().min(1000).max(120000).optional(),
   })
@@ -804,7 +800,6 @@ export const CliBackendSchema = z
     clearEnv: z.array(z.string()).optional(),
     modelArg: z.string().optional(),
     modelAliases: z.record(z.string(), z.string()).optional(),
-    sessionArg: z.string().optional(),
     sessionArgs: z.array(z.string()).optional(),
     resumeArgs: z.array(z.string()).optional(),
     forkArg: z.string().optional(),

@@ -914,14 +914,14 @@ describe("config identity/materialization regressions", () => {
           },
         },
       },
-      messages: {
-        responsePrefix: "✅",
+      channels: {
+        whatsapp: { responsePrefix: "✅" },
       },
     });
 
     expect(res.ok).toBe(true);
     if (res.ok) {
-      expect(res.config.messages?.responsePrefix).toBe("✅");
+      expect(res.config.channels?.whatsapp?.responsePrefix).toBe("✅");
       expect(res.config.agents?.list?.[0]?.groupChat?.mentionPatterns).toEqual(["@openclaw"]);
     }
   });
@@ -939,14 +939,14 @@ describe("config identity/materialization regressions", () => {
           },
         },
       },
-      messages: {
-        responsePrefix: "",
+      channels: {
+        whatsapp: { responsePrefix: "" },
       },
     });
 
     expect(res.ok).toBe(true);
     if (res.ok) {
-      expect(res.config.messages?.responsePrefix).toBe("");
+      expect(res.config.channels?.whatsapp?.responsePrefix).toBe("");
     }
   });
 
