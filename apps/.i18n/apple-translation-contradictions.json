@@ -194,6 +194,54 @@
       ]
     },
     {
+      "locale": "ja-JP",
+      "source": "%@ tokens",
+      "translations": [
+        "%@ トークン",
+        "%@トークン"
+      ]
+    },
+    {
+      "locale": "ko",
+      "source": "%@ tokens",
+      "translations": [
+        "%@개 토큰",
+        "토큰 %@개"
+      ]
+    },
+    {
+      "locale": "sv",
+      "source": "%@ tokens",
+      "translations": [
+        "%@ token",
+        "%@ tokens"
+      ]
+    },
+    {
+      "locale": "tr",
+      "source": "%@ tokens",
+      "translations": [
+        "%@ belirteç",
+        "%@ jeton"
+      ]
+    },
+    {
+      "locale": "zh-CN",
+      "source": "%@ tokens",
+      "translations": [
+        "%@ 个令牌",
+        "%@ 个词元"
+      ]
+    },
+    {
+      "locale": "zh-TW",
+      "source": "%@ tokens",
+      "translations": [
+        "%@ 個 token",
+        "%@ 個權杖"
+      ]
+    },
+    {
       "locale": "vi",
       "source": "Access Level",
       "translations": [
@@ -1202,7 +1250,8 @@
       "source": "Collapsed",
       "translations": [
         "Ihopfälld",
-        "Komprimerad"
+        "Komprimerad",
+        "Minimerad"
       ]
     },
     {
@@ -2825,6 +2874,54 @@
       "translations": [
         "Ativado",
         "Habilitado"
+      ]
+    },
+    {
+      "locale": "id",
+      "source": "Expanded",
+      "translations": [
+        "Buka",
+        "Diperluas"
+      ]
+    },
+    {
+      "locale": "ko",
+      "source": "Expanded",
+      "translations": [
+        "펼쳐짐",
+        "펼침"
+      ]
+    },
+    {
+      "locale": "sv",
+      "source": "Expanded",
+      "translations": [
+        "Expanderad",
+        "Utfälld"
+      ]
+    },
+    {
+      "locale": "th",
+      "source": "Expanded",
+      "translations": [
+        "ขยายอยู่",
+        "ขยายแล้ว"
+      ]
+    },
+    {
+      "locale": "tr",
+      "source": "Expanded",
+      "translations": [
+        "Genişletildi",
+        "Genişletilmiş"
+      ]
+    },
+    {
+      "locale": "vi",
+      "source": "Expanded",
+      "translations": [
+        "Mở rộng",
+        "Đã mở rộng"
       ]
     },
     {
