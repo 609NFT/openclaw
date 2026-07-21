@@ -14,8 +14,11 @@ import type {
 } from "../app/context.ts";
 import type { ExecApprovalRequest } from "../app/exec-approval.ts";
 import type { ApplicationOverlays } from "../app/overlays.ts";
+import type {
+  SidebarWorkboardBoard,
+  SidebarWorkboardRenderers,
+} from "../components/app-sidebar-workboard.ts";
 import type { SessionCapability } from "../lib/sessions/index.ts";
-import type { WorkboardBoardSummary } from "../lib/workboard/index.ts";
 import { createApplicationContextProvider } from "./application-context.ts";
 import { createStorageMock } from "./storage.ts";
 
@@ -36,8 +39,9 @@ export type SidebarLifecycleState = HTMLElement & {
   catalogOpenTarget: "viewer" | "terminal";
   canPairDevice: boolean;
   sidebarEntries: readonly string[];
-  workboardBoards: readonly WorkboardBoardSummary[];
+  workboardBoards: readonly SidebarWorkboardBoard[];
   workboardBoardsReady: boolean;
+  workboardRenderers?: SidebarWorkboardRenderers;
   sidebarLiveActivity: boolean;
   onUpdateSidebarEntries?: (entries: string[]) => void;
   pinnedAgentIds: readonly string[];
