@@ -576,6 +576,7 @@ class MainViewModel private constructor(
   val onboardingCompleted: StateFlow<Boolean> = prefs.onboardingCompleted
   val canvasDebugStatusEnabled: StateFlow<Boolean> = prefs.canvasDebugStatusEnabled
   val installedAppsSharingEnabled: StateFlow<Boolean> = prefs.installedAppsSharingEnabled
+  val accessibilityControlEnabled: StateFlow<Boolean> = prefs.accessibilityControlEnabled
   val speakerEnabled: StateFlow<Boolean> = prefs.speakerEnabled
   val preferredCameraFacing: StateFlow<String> = prefs.preferredCameraFacing
   val preferredAudioInputDevice: StateFlow<String?> = prefs.preferredAudioInputDevice
@@ -879,6 +880,10 @@ class MainViewModel private constructor(
 
   fun revokeInstalledAppsDisclosureConsent() {
     ensureRuntime().revokeInstalledAppsDisclosureConsent()
+  }
+
+  fun setAccessibilityControlEnabled(value: Boolean) {
+    prefs.setAccessibilityControlEnabled(value)
   }
 
   fun setNotificationForwardingEnabled(value: Boolean) {
