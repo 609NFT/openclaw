@@ -13,6 +13,8 @@ const providerMocks = vi.hoisted(() => ({
   liveCatalog: vi.fn(),
   staticCatalog: vi.fn(),
 }));
+const STARVING_LIVE_CATALOG_MS = 1_200;
+const HEALTH_PROBE_MAX_MS = 800;
 
 const providerConfig = {
   providers: {
@@ -134,7 +136,7 @@ describe("Gateway prepared model runtime startup", () => {
     );
     providerMocks.staticCatalog.mockResolvedValue(providerConfig);
     providerMocks.liveCatalog.mockImplementation(async () => {
-      const stopAt = performance.now() + 600;
+      const stopAt = performance.now() + STARVING_LIVE_CATALOG_MS;
       while (performance.now() < stopAt) {
         // Deliberately model synchronous provider/plugin catalog work that starves timers.
       }
@@ -164,7 +166,7 @@ describe("Gateway prepared model runtime startup", () => {
 
           const [{ elapsedMs, response }] = await Promise.all([probe, sidecars]);
           expect(response.status).toBe(200);
-          expect(elapsedMs).toBeLessThan(400);
+          expect(elapsedMs).toBeLessThan(HEALTH_PROBE_MAX_MS);
           expect(providerMocks.staticCatalog).toHaveBeenCalled();
           expect(providerMocks.liveCatalog).not.toHaveBeenCalled();
         },
