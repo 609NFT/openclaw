@@ -103,6 +103,12 @@ import {
   ConversationTurnParamsSchema,
   ConversationTurnReplySchema,
   ConversationTurnResultSchema,
+  ChannelsPairingApproveParamsSchema,
+  ChannelsPairingApproveResultSchema,
+  ChannelsPairingDismissParamsSchema,
+  ChannelsPairingDismissResultSchema,
+  ChannelsPairingListParamsSchema,
+  ChannelsPairingListResultSchema,
   ChannelsStartParamsSchema,
   ChannelsStopParamsSchema,
   ChannelsLogoutParamsSchema,
@@ -866,6 +872,9 @@ export const validateTalkSessionCloseParams = lazyCompile(TalkSessionCloseParams
 export const validateTalkSpeakParams = lazyCompile(TalkSpeakParamsSchema);
 export const validateTtsSpeakParams = lazyCompile(TtsSpeakParamsSchema);
 export const validateChannelsStatusParams = lazyCompile(ChannelsStatusParamsSchema);
+export const validateChannelsPairingListParams = lazyCompile(ChannelsPairingListParamsSchema);
+export const validateChannelsPairingApproveParams = lazyCompile(ChannelsPairingApproveParamsSchema);
+export const validateChannelsPairingDismissParams = lazyCompile(ChannelsPairingDismissParamsSchema);
 export const validateChannelsStartParams = lazyCompile(ChannelsStartParamsSchema);
 export const validateChannelsStopParams = lazyCompile(ChannelsStopParamsSchema);
 export const validateChannelsLogoutParams = lazyCompile(ChannelsLogoutParamsSchema);
@@ -1285,6 +1294,12 @@ export {
   TtsSpeakResultSchema,
   ChannelsStatusParamsSchema,
   ChannelsStatusResultSchema,
+  ChannelsPairingListParamsSchema,
+  ChannelsPairingListResultSchema,
+  ChannelsPairingApproveParamsSchema,
+  ChannelsPairingApproveResultSchema,
+  ChannelsPairingDismissParamsSchema,
+  ChannelsPairingDismissResultSchema,
   ChannelsStartParamsSchema,
   ChannelsStopParamsSchema,
   ChannelsLogoutParamsSchema,
@@ -1626,6 +1641,14 @@ export type {
   TalkModeParams,
   ChannelsStatusParams,
   ChannelsStatusResult,
+  ChannelsPairingListParams,
+  ChannelsPairingListResult,
+  ChannelsPairingApproveParams,
+  ChannelsPairingApproveResult,
+  ChannelsPairingDismissParams,
+  ChannelsPairingDismissResult,
+  ChannelsPairingAccount,
+  ChannelsPairingRequest,
   ChannelsStartParams,
   ChannelsStopParams,
   ChannelsLogoutParams,
